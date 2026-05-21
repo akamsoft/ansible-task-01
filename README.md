@@ -31,14 +31,19 @@
 
 Создаем образы Docker:
 
-```docker build -t centos7-python311 .```
+```
+docker build -t centos7-python311 .
+```
 
-```docker build -t ubuntu-python311 .```
+```
+docker build -t ubuntu-python311 .
+```
 
 Dockerfile - ы в папках centos7, ubuntu22.04
 
 Создаем файл docker-compose.yml:
 
+```
 services:
   centos:
     container_name: centos7
@@ -50,10 +55,13 @@ services:
     image: ubuntu-python311:latest
     restart: on-failure
     command: ["sleep", "infinity"]
+```    
 
 Запускаем:
 
+```
 docker comppose up -d
+```
 
 4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.
 5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились значения: для `deb` — `deb default fact`, для `el` — `el default fact`.
