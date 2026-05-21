@@ -25,6 +25,21 @@
 
 2. Найдите файл с переменными (group_vars), в котором задаётся найденное в первом пункте значение, и поменяйте его на `all default fact`.
 3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.
+
+Создаем образы Docker:
+
+```docker build -t centos7-python311 .```
+
+```docker build -t ubuntu-python311 .```
+
+Dockerfile - ы в папках centos7, ubuntu22.04
+
+Запускаем контейнеры:
+
+```docker exec -it centos7 /bin/bash```
+
+```docker exec -it ubuntu /bin/bash```
+
 4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.
 5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились значения: для `deb` — `deb default fact`, для `el` — `el default fact`.
 6.  Повторите запуск playbook на окружении `prod.yml`. Убедитесь, что выдаются корректные значения для всех хостов.
