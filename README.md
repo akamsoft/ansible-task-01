@@ -24,6 +24,9 @@
 Зафиксировал значение: 12
 
 2. Найдите файл с переменными (group_vars), в котором задаётся найденное в первом пункте значение, и поменяйте его на `all default fact`.
+
+![Alt text](images/3.jpg)
+
 3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.
 
 Создаем образы Docker:
@@ -34,11 +37,23 @@
 
 Dockerfile - ы в папках centos7, ubuntu22.04
 
-Запускаем контейнеры:
+Создаем файл docker-compose.yml:
 
-```docker exec -it centos7 /bin/bash```
+```services:
+  centos:
+    container_name: centos7
+    image: centos7-python311:latest
+    restart: on-failure
+    command: ["sleep", "infinity"]
+  ubuntu:
+    container_name: ubuntu
+    image: ubuntu-python311:latest
+    restart: on-failure
+    command: ["sleep", "infinity"]```
 
-```docker exec -it ubuntu /bin/bash```
+Запускаем:
+
+```docker comppose up -d```
 
 4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.
 5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились значения: для `deb` — `deb default fact`, для `el` — `el default fact`.
