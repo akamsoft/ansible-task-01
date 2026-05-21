@@ -39,7 +39,7 @@ Dockerfile - ы в папках centos7, ubuntu22.04
 
 Создаем файл docker-compose.yml:
 
-```services:
+services:
   centos:
     container_name: centos7
     image: centos7-python311:latest
@@ -49,7 +49,7 @@ Dockerfile - ы в папках centos7, ubuntu22.04
     container_name: ubuntu
     image: ubuntu-python311:latest
     restart: on-failure
-    command: ["sleep", "infinity"]```
+    command: ["sleep", "infinity"]
 
 Запускаем:
 
