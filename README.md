@@ -87,7 +87,7 @@ docker comppose up -d
 9. Посмотрите при помощи `ansible-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.
 
 ```
-ansible-doc -t connection -l
+ansible-doc set_fact
 ```
 
 ![Alt text](images/10.jpg)
